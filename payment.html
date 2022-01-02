@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+    <form action="" name="Payment">
+        <h1 class="main_heading"> Payment Form </h1>
+        <hr>
+
+        <p class="req">Required fields are followed by *</p>
+        <h2> Contact Information </h2>
+
+        <div>Name: *<input type="text"  name="name" placeholder="Your name" required></div>
+        
+        <fieldset>
+            <legend>Gender *</legend>
+            <p>
+              Male <input type="radio" name="gender" id="male" required>
+              Female <input type="radio" name="gender" id="female" required> 
+            </p>
+        </fieldset>
+       
+        <div>
+            Address: *<textarea name="add" id="add" cols="100" rows="8" placeholder="Your address" required></textarea>
+        </div>
+       
+        <a>Pincode: *<input type="number" name="pinc" id="pinc" required></a>
+       
+        <a>Email: *<input type="email" name="email" id="email" required></a>
+       
+        <hr>
+       
+        <h2> Payment Information </h2>
+       
+        <p>Card Type: *
+            <Select name="card" id="card" required>
+                <option value="">---Select a Card Type---</option>
+                <option value="visa">Visa</option>
+                <option value="rupay">Rupay</option>
+                <option value="Master Card">Master Card</option>
+            </Select>
+        </p>
+       
+        <p>
+            Card Number: *<input type="number" name="cardn" id="cardn" required>
+        </p>
+        
+        <p>
+            Expiration Date: *<input type="date" name="exp" id="exp" required>
+        </p>
+        
+        <p>CVV *<input type="password" name="cvv" id="cvv" required></p>
+        
+        <input type="submit" value="Pay Now">
+        <br>
+        <br>
+        <input type="reset" value="Reset">
+
+    </form>
+    </div>
+
+    
+<script>
+    const scriptURL =
+        'https://script.google.com/macros/s/AKfycbzFLP8NonLfYnrYaBVFCMjfjzSptpSM0F8uMON1fCa_ceeKx9i1gPrzZ6BeBdQ1lSZD/exec'
+    const form = document.forms['Payment']
+ 
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, {
+                method: 'POST',
+                body: new FormData(form)
+            })
+            .then(response => alert(
+                "Thanks for contacting us!!!"))
+            .catch(error => console.error('Error!', error.message))
+    })
+ 
+ </script>
+ 
+</body>
+</html>
